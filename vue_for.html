@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+		<style>
+			.active {
+				color: #FF0000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='app'>
+			<ul>
+				<li v-for="(item, index) in moves" 
+					@click="clickMoves(index)" 
+					:class="{active: index === keep}">
+					{{index + 1 + ' ' + item.name}}
+				</li>
+			</ul>
+		</div>
+		<script>
+			const vm = new Vue({
+				el: '#app',
+				data: {
+					moves: [{name : '英雄本色'}, 
+							{name : '喜剧之王'}, 
+							{name : '倩女幽魂'}, 
+							{name : '少林寺'}],
+					keep: 0
+				},
+				methods: {
+					clickMoves: function(i) {
+						console.log("clickMoves" + i);
+						this.keep = i;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
